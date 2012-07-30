@@ -6,23 +6,25 @@ Search form plugin (and utils) for Django CMS Search app
 Installation
 ============
 
-You will need to add the ``cmsplugin_search`` (and required dependencies) to the INSTALLED_APPS
-setting in the *settings.py* file::
+You will need to add the ``cmsplugin_search`` (and ``cms_search``,  ``cms_search.search_helpers``, ``cmsplugin_search``) to the INSTALLED_APPS setting in the *settings.py* file::
 
-  INSTALLED_APPS = (
-    ...
-    'haystack',
-    'cms_search',
-    'cms_search.search_helpers',
-    'cmsplugin_search',
-     ...
-  )
+    INSTALLED_APPS = (
+        ...
+        'haystack', 
+        'cms_search', 
+        'cms_search.search_helpers', 
+        'cmsplugin_search',
+        ...
+    )
   
 Add these settings in the *settings.py* file::
 
     #Haystask
     HAYSTACK_SITECONF =  'cmsplugin_search.search_sites'
-    HAYSTACK_SEARCH_ENGINE = 'whoosh' #for example
+    
+We use whoosh (*pip install whoosh*)::
+
+    HAYSTACK_SEARCH_ENGINE = 'whoosh'
     HAYSTACK_WHOOSH_PATH = os.path.join(os.path.dirname(__file__), 'whoosh_index')
     
 
@@ -34,6 +36,8 @@ if you want to use the ``custom_result`` templates tag, you have add ``CUSTOM_HA
     )
 
 and don't forget to load ``extra_haystack_tags`` in your template ;-).
+
+Run : ./manage.py syncdb [--all]
 
 Finally, in the CMS admin, you have to create a page and affect it the Search app hook.
 
