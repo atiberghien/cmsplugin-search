@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 {% load extra_haystack_tags %}
 {% block cms_toolbar %}{% endblock %}
 
@@ -8,7 +8,7 @@
     {% include "search/search_form.html" %}
     
     {% if query %}
-        <h3>Results</h3>
+        <h2>Results</h2>
         {% for result in page.object_list %}
             <p>
               {% custom_result result %}
