@@ -1,11 +1,7 @@
-import haystack
 from django.conf import settings
 from haystack import site
 from haystack.fields import CharField
 from haystack.indexes import SearchIndex
-
-
-haystack.autodiscover()
 
 if 'zinnia' in settings.INSTALLED_APPS:
     from zinnia.models import Entry
