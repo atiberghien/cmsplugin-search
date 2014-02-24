@@ -13,4 +13,9 @@ class CMSSearchPlugin(CMSPluginBase):
         context.update({'form':ModelSearchForm(load_all=True)})
         return context
 
+try:
+    plugin_pool.unregister_plugin(CMSSearchPlugin)
+except:
+    pass
+
 plugin_pool.register_plugin(CMSSearchPlugin) # register the plugin
